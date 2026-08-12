@@ -1,196 +1,103 @@
-# CLOUD STORAGE CREATION (S3) AND LAUNCHING AN (EC2) INSTANCE IN AWS
-## NAME: Kevin P
-## REG NO: 212224040159
+## Ex--2-AWS-Account-setup-and-EC2-creation
+
+### NAME: Kevin P
+### REG NO: 212224040159
+
 ## Aim
 
-To create and configure an Amazon Elastic Block Store (EBS) volume, attach and mount it to an Amazon EC2 instance, create a snapshot backup, and restore the snapshot to a new EBS volume.
+To create and manage an Amazon EC2 instance using the AWS Management Console, configure its security settings, monitor its performance, resize its resources, and explore EC2 protection features and service limits.
 
----
+## Objectives
 
-## Algorithm / Steps
+Create an Amazon EC2 instance with termination protection enabled.
 
-1. Create a new Amazon EBS volume with a size of 1 GiB.
-2. Select the same Availability Zone as the EC2 instance.
-3. Attach the EBS volume to the EC2 instance using `/dev/sdb`.
-4. Connect to the EC2 instance using AWS Systems Manager Session Manager.
-5. Check the available storage using `df -h`.
-6. Create an `ext3` file system on the EBS volume.
-7. Create the `/mnt/data-store` directory.
-8. Mount the EBS volume to `/mnt/data-store`.
-9. Configure `/etc/fstab` for automatic mounting.
-10. Verify that the EBS volume is successfully mounted.
-11. Create `file.txt` inside the mounted EBS volume.
-12. Verify the contents of the created file.
-13. Create an EBS snapshot named `My Snapshot`.
-14. Delete `file.txt` from the original EBS volume.
-15. Create a new EBS volume from the snapshot.
-16. Attach the restored volume to the EC2 instance using `/dev/sdc`.
-17. Create the `/mnt/data-store2` directory.
-18. Mount the restored volume to `/mnt/data-store2`.
-19. Verify that `file.txt` has been successfully restored.
+Configure security groups to allow HTTP access.
 
----
+Monitor the EC2 instance using AWS monitoring tools.
 
-## Program
+Resize the EC2 instance and modify its storage volume.
 
-### 1. Check Available Storage
+Explore EC2 service quotas and test stop protection.
 
-```bash
-df -h
-```
+## Procedure
+### Task 1: Launch an Amazon EC2 Instance
 
-### 2. Create an ext3 File System
+Log in to the AWS Management Console.
 
-```bash
-sudo mkfs -t ext3 /dev/sdb
-```
+Open the EC2 service and launch a new instance.
 
-### 3. Create a Mount Directory
+Select the Amazon Linux 2023 AMI and t2.micro instance type.
 
-```bash
-sudo mkdir /mnt/data-store
-```
+Configure the key pair, VPC, subnet, and security group.
 
-### 4. Mount the EBS Volume
+Enable termination protection.
 
-```bash
-sudo mount /dev/sdb /mnt/data-store
-```
+Add the user data script to install the Apache web server.
 
-### 5. Configure Automatic Mounting
+Launch the instance and wait until it reaches the Running state.
 
-```bash
-echo "/dev/sdb   /mnt/data-store ext3 defaults,noatime 1 2" | sudo tee -a /etc/fstab
-```
+### Task 2: Monitor the EC2 Instance
 
-### 6. View the File System Configuration
+Open the Status Checks tab and verify the instance health.
 
-```bash
-cat /etc/fstab
-```
+View CloudWatch monitoring metrics.
 
-### 7. Verify the Mounted Volume
+Retrieve the system log.
 
-```bash
-df -h
-```
+View the instance screenshot for troubleshooting.
 
-### 8. Create a File in the EBS Volume
+### Task 3: Configure Security Group and Access the Web Server
 
-```bash
-sudo sh -c "echo some text has been written > /mnt/data-store/file.txt"
-```
+Copy the Public IPv4 address of the EC2 instance.
 
-### 9. Read the File
+Attempt to access the web server through a browser.
 
-```bash
-cat /mnt/data-store/file.txt
-```
+Edit the inbound rules of the security group.
 
-### 10. Delete the File
+Add an HTTP rule allowing traffic from Anywhere (IPv4).
 
-```bash
-sudo rm /mnt/data-store/file.txt
-```
+Save the changes and refresh the browser.
 
-### 11. Verify File Deletion
+### Task 4: Resize the EC2 Instance
 
-```bash
-ls /mnt/data-store/
-```
+Stop the EC2 instance.
 
-### 12. Create a Mount Directory for the Restored Volume
+Change the instance type from t2.micro to t2.small.
 
-```bash
-sudo mkdir /mnt/data-store2
-```
+Enable stop protection.
 
-### 13. Mount the Restored EBS Volume
+Increase the EBS volume size from 8 GiB to 10 GiB.
 
-```bash
-sudo mount /dev/sdc /mnt/data-store2
-```
+Restart the EC2 instance.
 
-### 14. Verify Snapshot Restoration
+### Task 5: Explore EC2 Limits and Test Stop Protection
 
-```bash
-ls /mnt/data-store2/
-```
+Open the Service Quotas service.
 
-Expected output:
+View Amazon EC2 resource limits.
 
-```text
-file.txt
-```
+Attempt to stop the protected EC2 instance.
 
----
+Disable stop protection.
 
-## Outputs
+Stop the EC2 instance successfully.
 
-### Output 1: EBS Volume Created
+## Output
+Output 1: EC2 Instance Creation
+<img width="1919" height="1070" alt="Screenshot 2026-08-02 114516" src="https://github.com/user-attachments/assets/416fdf26-220b-4518-aa91-301877bc1cf8" />
 
-The AWS EC2 Volumes page shows the newly created `My Volume` EBS volume with a size of 1 GiB.
-<img width="2556" height="1600" alt="Screenshot 2026-07-28 084203" src="https://github.com/user-attachments/assets/622bd161-cf4b-4a2f-b52a-787acdec576c" />
+Output 2: EC2 Monitoring
+<img width="1919" height="1076" alt="Screenshot 2026-08-02 115033" src="https://github.com/user-attachments/assets/91dc2560-15e7-43b1-a906-f7dc8022c7f4" />
 
+Output 3: Web Server Access
+<img width="1919" height="1073" alt="Screenshot 2026-08-02 115224" src="https://github.com/user-attachments/assets/44098a2c-a332-40fa-bba7-1f693f25ed72" />
 
+Output 4: Instance Resizing
+<img width="1919" height="1080" alt="Screenshot 2026-08-02 115800" src="https://github.com/user-attachments/assets/0d3cb01d-d9b5-4b1d-9b42-023d6f3e530d" />
 
----
-
-### Output 2: EBS Volume Attached to EC2 Instance
-
-The `My Volume` EBS volume is successfully attached to the `Lab` EC2 instance and is in the `In-use` state.
-
-<img width="2556" height="1596" alt="Screenshot 2026-07-28 084647" src="https://github.com/user-attachments/assets/c1c99206-310f-46ab-a0e5-4cf7539c8b9a" />
-
-
----
-
-### Output 3: EBS Volume Mounted Successfully
-
-The `df -h` command displays the mounted EBS volume at `/mnt/data-store`.
-
-
-<img width="2534" height="1380" alt="image" src="https://github.com/user-attachments/assets/06fcc18e-45ab-443c-9684-7f72a116488b" />
-
-
----
-
-### Output 4: File Created and Verified
-
-The file `file.txt` is successfully created inside the EBS volume and the stored text is displayed.
-
-```text
-some text has been written
-```
-
-<img width="2560" height="1596" alt="Screenshot 2026-07-28 084824" src="https://github.com/user-attachments/assets/e0414096-fe24-4412-8332-1b7d1e240e0a" />
-
-
-
----
-
-### Output 5: EBS Snapshot Created
-
-The AWS EC2 Snapshots page shows `My Snapshot` with the snapshot creation completed successfully.
-<img width="2558" height="1598" alt="Screenshot 2026-07-28 084124" src="https://github.com/user-attachments/assets/8c314377-8d01-4027-b37e-2302419e6271" />
-
-
-
-
-
----
-
-### Output 6: Snapshot Restored Successfully
-
-The snapshot is restored to a new EBS volume named `Restored Volume`. After attaching and mounting the restored volume, the deleted `file.txt` is successfully recovered.
-```text
-file.txt
-```
-<img width="2560" height="1596" alt="Screenshot 2026-07-28 084824" src="https://github.com/user-attachments/assets/698a0a51-6ff2-428e-9b57-9c410addc588" />
-
-
-<img width="1917" height="1152" alt="Screenshot 2026-07-28 090515" src="https://github.com/user-attachments/assets/f501d053-c47a-4414-a445-1b8656bc755c" />
-<img width="1917" height="1160" alt="Screenshot 2026-07-28 092957" src="https://github.com/user-attachments/assets/d411d29c-0ac7-406b-8556-394e1543667c" />
+Output 5: EC2 Limits and Stop Protection
+<img width="1919" height="1070" alt="Screenshot 2026-08-02 115821" src="https://github.com/user-attachments/assets/b6d13674-e07d-406f-b5c7-0f1d775a94c4" />
 
 ## Result
-Thus, an Amazon EBS volume was successfully created and attached to an Amazon EC2 instance. The volume was formatted with an ext3 file system, mounted, and used for storing data. An EBS snapshot was successfully created as a backup, and a new EBS volume was restored from the snapshot. The previously deleted file.txt was successfully recovered, demonstrating the backup and restore functionality of Amazon EBS.
+
+The Amazon EC2 instance was successfully launched, monitored, secured, resized, and managed using the AWS Management Console. Security group configuration, instance monitoring, storage modification, service quota exploration, and stop protection features were successfully demonstrated
