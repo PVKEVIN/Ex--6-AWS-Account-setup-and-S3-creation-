@@ -1,4 +1,4 @@
-## Ex--2-AWS-Account-setup-and-EC2-creation
+<img width="1918" height="1133" alt="Screenshot 2026-07-29 103726" src="https://github.com/user-attachments/assets/d8e99860-ae1f-4a84-936f-1c134a86f3ff" />## Ex--2-AWS-Account-setup-and-EC2-creation
 
 ### NAME: Kevin P
 ### REG NO: 212224040159
@@ -93,7 +93,7 @@ Output 3: Web Server Access
 <img width="1916" height="1085" alt="Screenshot 2026-07-28 140316" src="https://github.com/user-attachments/assets/be91d8c6-b8c9-441b-8ecb-98093849d027" />
 
 Output 4: Instance Resizing
-<img width="1919" height="1080" alt="Screenshot 2026-08-02 115800" src="https://github.com/user-attachments/assets/0d3cb01d-d9b5-4b1d-9b42-023d6f3e530d" />
+<img width="1918" height="1133" alt="Screenshot 2026-07-29 103726" src="https://github.com/user-attachments/assets/48f7f803-01ed-4d15-864d-7a9bf1be056b" />
 
 Output 5: EC2 Limits and Stop Protection
 <img width="1918" height="1140" alt="Screenshot 2026-07-29 111148" src="https://github.com/user-attachments/assets/3a8f1fdd-19a8-4ec2-b0a4-a1c86a30a1cb" />
