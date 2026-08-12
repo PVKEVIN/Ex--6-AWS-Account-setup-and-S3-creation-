@@ -84,19 +84,20 @@ Stop the EC2 instance successfully.
 
 ## Output
 Output 1: EC2 Instance Creation
-<img width="1919" height="1070" alt="Screenshot 2026-08-02 114516" src="https://github.com/user-attachments/assets/416fdf26-220b-4518-aa91-301877bc1cf8" />
+<img width="1918" height="1087" alt="Screenshot 2026-07-28 135010" src="https://github.com/user-attachments/assets/a32904b6-a85f-44e1-8f3d-a242aa2c7bfa" />
 
 Output 2: EC2 Monitoring
-<img width="1919" height="1076" alt="Screenshot 2026-08-02 115033" src="https://github.com/user-attachments/assets/91dc2560-15e7-43b1-a906-f7dc8022c7f4" />
+<img width="1915" height="1087" alt="Screenshot 2026-07-28 135723" src="https://github.com/user-attachments/assets/9bf5184f-1ce7-444f-97cf-43a70a083f7b" />
 
 Output 3: Web Server Access
-<img width="1919" height="1073" alt="Screenshot 2026-08-02 115224" src="https://github.com/user-attachments/assets/44098a2c-a332-40fa-bba7-1f693f25ed72" />
+<img width="1916" height="1085" alt="Screenshot 2026-07-28 140316" src="https://github.com/user-attachments/assets/be91d8c6-b8c9-441b-8ecb-98093849d027" />
 
 Output 4: Instance Resizing
 <img width="1919" height="1080" alt="Screenshot 2026-08-02 115800" src="https://github.com/user-attachments/assets/0d3cb01d-d9b5-4b1d-9b42-023d6f3e530d" />
 
 Output 5: EC2 Limits and Stop Protection
-<img width="1919" height="1070" alt="Screenshot 2026-08-02 115821" src="https://github.com/user-attachments/assets/b6d13674-e07d-406f-b5c7-0f1d775a94c4" />
+<img width="1918" height="1140" alt="Screenshot 2026-07-29 111148" src="https://github.com/user-attachments/assets/3a8f1fdd-19a8-4ec2-b0a4-a1c86a30a1cb" />
+
 
 ## Result
 
